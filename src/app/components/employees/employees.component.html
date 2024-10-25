@@ -1,0 +1,100 @@
+<mat-card class="mx-20 my-4">
+    <mat-card-title>
+        <mat-toolbar color="secondary">
+            <span>Empleados</span>
+            <button mat-raised-button color="primary" class="ml-auto" (click)="createEmployee()">
+                    <mat-icon>add</mat-icon>
+                    <span>Agregar Empleado</span>
+                </button>
+        </mat-toolbar>
+        <mat-form-field class="w-full">
+            <mat-label>Buscar</mat-label>
+            <input matInput #input>
+        </mat-form-field>
+    </mat-card-title>
+    <mat-card-content class="dashboard-card-content">
+        <div class="mat-elevation-z8" style="overflow: auto;">
+            <table mat-table>
+                <!-- ID Column -->
+                <ng-container matColumnDef="nombre">
+                    <th mat-header-cell *matHeaderCellDef class="w-15"> Nombre </th>
+                    <td mat-cell *matCellDef="let element"> {{element.first_name}} </td>
+                </ng-container>
+
+                <!-- Nombre Column -->
+                <ng-container matColumnDef="apellido">
+                    <th mat-header-cell *matHeaderCellDef class="w-15"> Apellido </th>
+                    <td mat-cell *matCellDef="let element"> {{element.last_name}} </td>
+                </ng-container>
+
+                <!-- Email Real Column -->
+                <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef class="w-15"> Email </th>
+                    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                </ng-container>
+
+                <!-- Celular Real Column -->
+                <ng-container matColumnDef="celular">
+                    <th mat-header-cell *matHeaderCellDef class="w-15"> Telefono </th>
+                    <td mat-cell *matCellDef="let element"> {{element.phone_number}} </td>
+                </ng-container>
+
+                <!-- Contratacion column-->
+                <ng-container matColumnDef="contratacion">
+                    <th mat-header-cell *matHeaderCellDef class="w-5" style="text-align: center;"> Fecha Contratacion </th>
+                    <td mat-cell *matCellDef="let element"> {{element.hire_date}} </td>
+                </ng-container>
+
+
+                <!-- Jefe Column -->
+                <ng-container matColumnDef="jefe">
+                    <th mat-header-cell *matHeaderCellDef class="w-15"> Jefe </th>
+                    <td mat-cell *matCellDef="let element"> {{element.manager?.first_name}} </td>
+                </ng-container>
+
+                <!-- Trabajo Column -->
+                <ng-container matColumnDef="trabajo">
+                    <th mat-header-cell *matHeaderCellDef class="w-15"> Trabajo </th>
+                    <td mat-cell *matCellDef="let element"> {{element.job?.job_title}} </td>
+                </ng-container>
+
+                <!-- Salario Column -->
+                <ng-container matColumnDef="salario">
+                    <th mat-header-cell *matHeaderCellDef class="w-15"> Salario </th>
+                    <td mat-cell *matCellDef="let element"> {{element.salary | currency: 'USD'}} </td>
+                </ng-container>
+
+                <!-- Comision Column -->
+                <ng-container matColumnDef="comision">
+                    <th mat-header-cell *matHeaderCellDef class="w-15"> Comision </th>
+                    <td mat-cell *matCellDef="let element"> {{element.commission_pct | currency: 'USD'}} </td>
+                </ng-container>
+
+                <!-- Department Column -->
+                <ng-container matColumnDef="departamento">
+                    <th mat-header-cell *matHeaderCellDef class="w-15"> Departamento </th>
+                    <td mat-cell *matCellDef="let element"> {{element.department?.department_name}} </td>
+                </ng-container>
+
+                <!-- Acciones Column -->
+                <ng-container matColumnDef="acciones">
+                    <th mat-header-cell *matHeaderCellDef class="w-5">Acciones</th>
+                    <td mat-cell *matCellDef="let element" style="text-align: start;">
+                        <a class="pointer text-sky-700" matTooltip="Editar Empleado">
+                            <mat-icon>edit</mat-icon>
+                        </a>
+                        <a class="pointer text-red-500" matTooltip="Eliminar Empleado">
+                            <mat-icon>delete</mat-icon>
+                        </a>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+            </mat-paginator>
+        </div>
+    </mat-card-content>
+</mat-card>

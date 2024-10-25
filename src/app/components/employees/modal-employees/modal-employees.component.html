@@ -1,0 +1,96 @@
+<h2 mat-dialog-title>{{ accionTitle }} Empleado</h2>
+<hr>
+<mat-dialog-content>
+    <form [formGroup]="employeeForm" class="h-auto">
+        <div class="grid grid-cols-3 gap-3">
+            <div>
+                <mat-grid-list cols="1" rowHeight="80px">
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <mat-label>ID</mat-label>
+                            <input matInput autocomplete="off" formControlName="employee_id" placeholder="000">
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <mat-label>Nombre</mat-label>
+                            <input matInput autocomplete="off" formControlName="first_name">
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <mat-label>Apellido</mat-label>
+                            <input matInput autocomplete="off" formControlName="last_name">
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <mat-label>Email</mat-label>
+                            <input matInput formControlName="email" placeholder="user@gmail.com">
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <mat-label>Comisión</mat-label>
+                            <input matInput formControlName="commission_pct">
+                        </mat-form-field>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+            <div>
+                <mat-grid-list cols="1" rowHeight="80px">
+
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <mat-label>Telefono</mat-label>
+                            <input matInput formControlName="phone_number">
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <mat-label>Puesto Trabajo</mat-label>
+                            <input matInput formControlName="job_id">
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <mat-label>Salario</mat-label>
+                            <input matInput formControlName="salary">
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <mat-label>Jefe</mat-label>
+                            <input matInput formControlName="manager_id">
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <mat-label>Departamento</mat-label>
+                            <input matInput formControlName="department_id">
+                        </mat-form-field>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+            <div>
+                <mat-grid-list cols="1" rowHeight="80px">
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <mat-label>F.Contratación</mat-label>
+                            <input matInput [matDatepicker]="hire_date" formControlName="hire_date">
+                            <mat-hint>MM/DD/YYYY</mat-hint>
+                            <mat-datepicker-toggle matIconSuffix [for]="hire_date"></mat-datepicker-toggle>
+                            <mat-datepicker #hire_date></mat-datepicker>
+                        </mat-form-field>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+        </div>
+    </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close color="warn">Volver</button>
+    <button mat-raised-button color="primary" [disabled]="employeeForm.invalid">{{ accionButton }}</button>
+</mat-dialog-actions>
