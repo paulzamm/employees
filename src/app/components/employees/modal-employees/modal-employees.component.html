@@ -32,7 +32,7 @@
                     <mat-grid-tile>
                         <mat-form-field>
                             <mat-label>Comisión</mat-label>
-                            <input matInput formControlName="commission_pct">
+                            <input matInput formControlName="commission_pct" placeholder="0.00">
                         </mat-form-field>
                     </mat-grid-tile>
                 </mat-grid-list>
@@ -92,5 +92,5 @@
 
 <mat-dialog-actions align="end">
     <button mat-raised-button mat-dialog-close color="warn">Volver</button>
-    <button mat-raised-button color="primary" [disabled]="employeeForm.invalid">{{ accionButton }}</button>
+    <button mat-raised-button color="primary" [disabled]="employeeForm.invalid" (click)="saveEmployee()">{{ accionButton }}</button>
 </mat-dialog-actions>

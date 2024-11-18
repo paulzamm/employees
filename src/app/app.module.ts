@@ -11,6 +11,8 @@ import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { LoginComponent } from './components/login/login.component';
+import { LayoutComponent } from './shared/layout/layout.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     HomeComponent,
     NavbarComponent,
     EmployeesComponent,
-    ModalEmployeesComponent
+    ModalEmployeesComponent,
+    LoginComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,

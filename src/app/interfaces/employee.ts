@@ -1,17 +1,13 @@
-import { department } from "./department";
-import { job } from "./job";
-import { manager } from "./manager";
-
 export interface employee {
     employee_id: number,
     first_name: string,
-    las_name: string,
+    last_name: string,
     email: string,
     phone_number: string,
     hire_date: string,
-    salary: number,
-    commission_pct: number,
-    department: department,
-    job: job,
-    manager: manager
+    job_id: string,
+    salary: string,
+    commission_pct: string,
+    manager_id: number,
+    department_id: number
 }
