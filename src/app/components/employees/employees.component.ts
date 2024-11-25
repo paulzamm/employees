@@ -101,4 +101,48 @@ export class EmployeesComponent {
       }
     });
   }
+
+  exportEmployees(){
+    this._employeeService.exportData().subscribe(
+      (response) =>{
+        const blob = new Blob([response], { type: 'text/csv' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'data_employees.csv';
+        a.click();
+        window.URL.revokeObjectURL(url);
+      },
+      (error) => {
+        console.log('Error al exportar los empleados', error);
+        this._snackBar.open('Error al exportar los datos', '', {
+          duration: 2000
+        });
+      }
+    );
+  }
+
+  importEmployees(event: any){
+    const file = event.target.files[0];
+    if(file){
+      this._employeeService.importData(file).subscribe({
+        next: () => {
+          this.getEmployees();
+          this._snackBar.open('Datos importados exitosamente', '', {
+            duration: 2000
+          });
+        },
+        error: (error) => {
+          console.log('Error al importar los empleados', error);
+          this._snackBar.open('Error al importar los datos', '', {
+            duration: 2000
+          });
+        }
+      });
+    }else{
+      this._snackBar.open('No se ha seleccionado un archivo', '', {
+        duration: 2000
+      });
+    }
+  }
 }

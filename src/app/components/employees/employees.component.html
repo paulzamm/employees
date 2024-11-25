@@ -11,6 +11,15 @@
         <mat-icon>add</mat-icon>
         <span>Add Employee</span>
       </button>
+      <button mat-raised-button color="accent" class="ml-4" (click)="exportEmployees()" >
+        <mat-icon>download</mat-icon>
+        <span>Exportar</span>
+      </button>
+      <button mat-raised-button color="accent" class="ml-4" (click)="fileInput.click()" >
+        <mat-icon>upload</mat-icon>
+        <span>Importar</span>
+      </button>
+      <input type="file" #fileInput style="display: none;" (change)="importEmployees($event)" accept=".csv" >
     </mat-toolbar>
     <mat-form-field class="w-full">
       <mat-label>Search</mat-label>

@@ -44,4 +44,16 @@ export class EmployeeService {
     const header = this.auth.gethearders();
     return this.http.delete<employee>(`${this.myUrl}${id}`, {headers: header});
   }
+
+  exportData(): Observable<Blob>{
+    const header = this.auth.gethearders();
+    return this.http.get(`${this.myappUrl}exportEmployees`, {headers: header, responseType: 'blob'});
+  }
+
+  importData(file: File): Observable<any>{
+    const header = this.auth.gethearders();
+    const formData = new FormData();
+    formData.append('file', file, file.name);
+    return this.http.post(`${this.myappUrl}importEmployees`, formData, {headers: header});
+  }
 }
